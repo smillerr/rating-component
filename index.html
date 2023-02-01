@@ -31,7 +31,9 @@
       margin: 0;
     }
     .attribution { 
-      font-size: 11px; text-align: center; 
+      font-size: 11px; 
+      text-align: center; 
+      color: white;
     }
     .attribution a { 
       color: hsl(228, 45%, 44%); 
@@ -41,7 +43,7 @@
       display: grid;
       place-items: center;
       width: 100%;
-      height: 100vh;
+      height: 95vh;
       background-color: var(--very-dark-blue);
     }
     #cardContainer{
@@ -69,13 +71,13 @@
       width: 1.4rem;
       height: 1.4rem;
     }
-    #title{
+    .title{
       font-size: 2.4rem;
       font-weight: bold;
       color: var(--white);
       margin-bottom: 0.8rem;
     }
-    #description{
+    .description{
       font-size: 1.4rem;
       font-weight: 300;
       color: var(--light-grey);
@@ -83,15 +85,31 @@
     }
     .ratings{
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
     }
-    .roundButton{
-      border-radius: 50%;
+    .ratings div{
       width: 4rem;
       height: 4rem;
-      border: none;
-      background-color: hsl(214, 18%, 15%);
-      color: var(--medium-grey);
+      position: relative;
+    }
+    .ratings div input{
+      width: inherit;
+      height: inherit;
+      margin: 0;
+      
+    }
+    label{
+      position: absolute;
+      z-index: 1;
+      margin: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: var(--small);
+      font-family: 'Overpass' , sans-serif ;
+    }
+    label:hover{
+      color: var(--light-grey);
     }
     #buttonContainer{
       width: 100%;
@@ -103,13 +121,70 @@
       height: 50%;
       border-radius: 2rem;
       border: none;
-      background-color: var(--white);
-      color: var(--orange);
+      background-color: var(--orange);
+      color: var(--white);
       font-weight: bold;
       font-family: 'Overpass' , sans-serif ;
       position: absolute;
       bottom: 0;
       margin-bottom: 1.6rem;
+      cursor: pointer;
+    }
+    .submitButton:hover{
+      color: var(--orange);
+      background-color: var(--white);
+    }
+    #thanksCard{
+      position: relative;
+      width: 300px;
+      height: 280px;
+      background-color: var(--dark-blue);
+      border-radius: 2rem;
+      padding: 1.6rem;
+      display: none;
+    }
+    .thanksIlustrationContainer{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 3.2rem;
+    }
+    #thanksIlustration{
+      width: 50%;
+      height: 50%;
+    }
+    .msgContainer{
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      background-color: hsl(214, 18%, 15%);
+      border-radius: 2rem;
+      margin: auto;
+      color: var(--orange);
+    }
+    .textContainer{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .textContainer .description{
+      text-align: center;
+    }
+    footer{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: hsl(214, 18%, 15%);
+      height: 5vh;
+    }
+    @media (max-width: 640px) {
+      #cardContainer{
+        width: 280px;
+      }
+      #thanksCard{
+        width: 280px;
+      }
     }
   </style>
 </head>
@@ -120,42 +195,56 @@
           <img src="./images/icon-star.svg">
         </div>
         <div class="text">
-          <h1 id="title"> How did we do?</h1>
-          <p id="description"> Please let us know how we did with your support request. All feedback is appreciated 
+          <h1 class="title"> How did we do?</h1>
+          <p class="description"> Please let us know how we did with your support request. All feedback is appreciated 
             to help us improve our offering! </p>
         </div>
-        <div class="ratings">
-          <button class="roundButton"> 1 </button>
-          <button class="roundButton"> 2 </button>
-          <button class="roundButton"> 3 </button>
-          <button class="roundButton"> 4 </button>
-          <button class="roundButton"> 5 </button>
-        </div>
+        <form class="ratings">
+          <div>
+            <input type="radio" id="firstButton" name="score" value="1">
+            <label for="firstButton"> 1 </label>
+          </div>
+          <div>
+            <label for="secondButton"> 2 </label>
+            <input type="radio" id="secondButton" name="score" value="2">
+          </div>
+          <div>
+            <label for="thridButton"> 3 </label>
+            <input type="radio" id="thridButton" name="score" value="3">
+          </div>
+          <div>
+            <label for="fourthButton"> 4 </label>
+            <input type="radio" id="fourthButton" name="score" value="4">
+          </div>
+          <div>
+            <label for="fifthButton"> 5 </label>
+            <input type="radio" id="fifthButton" name="score" value="5">
+          </div>
+        </form>
         <div id="buttonContainer"> 
           <button class="submitButton"> SUBMIT </button>          
         </div>
-        
+      </div>
+      <div id="thanksCard"> 
+          <div class="thanksIlustrationContainer">
+            <img src="./images/illustration-thank-you.svg" id="thanksIlustration">
+          </div>
+          <div class="msgContainer"> 
+            <p id="message"> The rating goes here </p>
+          </div>
+          <div class="textContainer"> 
+            <h1 class="title"> Thank you! </h1>
+            <p class="description"> We appreciate you taking the time to give a rating. If you ever need more support, 
+              dont hesitate to get in touch! </p> 
+          </div> 
       </div>
     </div>
-  <!-- Rating state start -->
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-
-  <!-- You selected Add rating here out of 5 -->
-
-  <!-- Thank you!
-
-  We appreciate you taking the time to give a rating. If you ever need more support, 
-  dont hesitate to get in touch!
-
-  Thank you state end -->
-<!-- 
-<footer> 
-    <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Sebastian Miller</a>.
-    </div>
-</footer> -->
+  <footer> 
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Sebastian Miller</a>.
+      </div>
+   </footer> 
+<script src="./script.js"></script>
 </body>
 </html>
