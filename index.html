@@ -91,12 +91,31 @@
       width: 4rem;
       height: 4rem;
       position: relative;
+      border-radius: 50%;
+      background-color: hsl(213, 13%, 17%);
+      color: var(--light-grey);
+      font-size: var(--small);
+      font-family: 'Overpass' , sans-serif; 
+      cursor: pointer;
+    }
+    .ratings div:hover{
+      background-color:var(--light-grey);
+      color: var(--white); 
+    }
+    .ratings div:active{
+      background-color: var(--orange);
     }
     .ratings div input{
       width: inherit;
       height: inherit;
       margin: 0;
-      
+    }
+    input[type="radio"]{
+      opacity: 0;
+      cursor: pointer;
+    }
+    input[type="radio"]:checked{
+
     }
     label{
       position: absolute;
@@ -105,11 +124,6 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: var(--small);
-      font-family: 'Overpass' , sans-serif ;
-    }
-    label:hover{
-      color: var(--light-grey);
     }
     #buttonContainer{
       width: 100%;
